@@ -7,6 +7,7 @@
         class="json-input"
         placeholder="JSON input here.."
         ref="jsonInputEle"
+        @keyup.ctrl.enter="formatJson"
       ></textarea>
 
       <button @click.prevent="formatJson" class="btn btn-primary">Format</button>
