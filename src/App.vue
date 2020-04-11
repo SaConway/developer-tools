@@ -1,11 +1,18 @@
 <template>
-  <div id="app">
+  <div id="app" class="main">
+    <SideNav />
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-export default {};
+import SideNav from "@/components/SideNav";
+
+export default {
+  components: {
+    SideNav
+  }
+};
 </script>
 
 <style lang="scss">
@@ -39,6 +46,19 @@ span {
   letter-spacing: 1px;
 }
 
+input,
+textarea,
+button {
+  font-family: inherit;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 1rem;
+  min-height: 100vh;
+}
+
 .container {
   width: 80%;
   max-width: 1000px;
@@ -46,12 +66,6 @@ span {
   display: grid;
   place-items: center;
   animation: fade 1s ease;
-}
-
-input,
-textarea,
-button {
-  font-family: inherit;
 }
 
 .btn {

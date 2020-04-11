@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import JsonFormat from "../components/JsonFormat";
-import PxRemConverter from "../components/PxRemConverter";
+import JsonFormat from "@/components/JsonFormat";
+import PxRemConverter from "@/components/PxRemConverter";
 
 Vue.use(VueRouter);
 

@@ -67,6 +67,7 @@ export default {
 <style lang="scss" scoped>
 .json-form {
   margin-bottom: 3rem;
+  width: 100%;
 }
 
 .json-input {
