@@ -64,7 +64,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .json-form {
   margin-bottom: 3rem;
 }
@@ -75,22 +75,18 @@ export default {
   min-height: 10rem;
   padding: 1rem;
   resize: vertical;
-  border-radius: var(--border-radius);
-  color: var(--clr-black);
-}
+  border-radius: $border-radius;
+  color: $clr-black;
 
-.json-input.err {
-  border: 1px solid var(--clr-red);
-}
-
-.json-input:focus {
-  outline: 0.1rem solid var(--clr-accent);
+  &.err {
+    border: 1px solid $clr-red;
+  }
 }
 
 .json-output-text {
   margin-top: 1rem;
   padding: 1rem;
-  box-shadow: var(--box-shadow);
+  box-shadow: $box-shadow;
   overflow-y: auto;
 }
 
@@ -104,7 +100,7 @@ export default {
 }
 
 .json-copy-text {
-  color: var(--clr-white);
+  color: $clr-white;
   position: absolute;
   right: 0;
   opacity: 0;
@@ -112,35 +108,35 @@ export default {
 }
 
 .json-invalid-text {
-  background: var(--clr-red);
+  background: $clr-red;
   color: #fff;
   padding: 0.4rem 1rem;
   margin-left: 5rem;
-  border-radius: var(--border-radius);
+  border-radius: $border-radius;
   display: inline-block;
   animation: fade 0.5s ease-in-out;
   backface-visibility: hidden;
   position: relative;
-}
 
-.json-invalid-text::before {
-  content: "";
-  position: absolute;
-  left: 0.75rem;
-  bottom: 100%;
-  width: 1px;
-  height: 1.15rem;
-  background-color: currentColor;
-}
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0.75rem;
+    bottom: 100%;
+    width: 1px;
+    height: 1.15rem;
+    background-color: currentColor;
+  }
 
-.json-invalid-text::after {
-  content: "";
-  position: absolute;
-  right: 0.75rem;
-  bottom: 100%;
-  width: 1px;
-  height: 1.15rem;
-  background-color: currentColor;
+  &::after {
+    content: "";
+    position: absolute;
+    right: 0.75rem;
+    bottom: 100%;
+    width: 1px;
+    height: 1.15rem;
+    background-color: currentColor;
+  }
 }
 
 @keyframes fade-slide {
@@ -154,29 +150,6 @@ export default {
   90% {
     opacity: 1;
     bottom: calc(100% + 1rem);
-  }
-}
-
-@keyframes shake {
-  10%,
-  90% {
-    transform: translate3d(-1px, 0, 0);
-  }
-
-  20%,
-  80% {
-    transform: translate3d(2px, 0, 0);
-  }
-
-  30%,
-  50%,
-  70% {
-    transform: translate3d(-2px, 0, 0);
-  }
-
-  40%,
-  60% {
-    transform: translate3d(2px, 0, 0);
   }
 }
 </style>

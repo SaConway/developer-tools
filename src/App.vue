@@ -8,20 +8,8 @@
 export default {};
 </script>
 
-<style>
+<style lang="scss">
 @import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
-
-:root {
-  --clr-white: #f5eaea;
-  --clr-black: #212121;
-  --clr-black-dark: #1d1d1d;
-  --clr-accent: #00bcd4;
-  --clr-accent-light: #0096a9;
-  --clr-red: #dc3545;
-  --clr-gray: #ccc;
-  --border-radius: 0.1rem;
-  --box-shadow: 0 0 2.5px rgba(0, 0, 0, 0.25);
-}
 
 *,
 *::before,
@@ -32,23 +20,23 @@ export default {};
 }
 
 ::selection {
-  background-color: var(--clr-accent);
-  color: var(--clr-white);
+  background-color: $clr-accent;
+  color: $clr-white;
+}
+
+:focus {
+  outline-color: $clr-accent;
 }
 
 body {
-  background-color: var(--clr-black);
-  color: var(--clr-white);
+  background-color: $clr-black;
+  color: $clr-white;
   font-family: "Open Sans", sans-serif;
 }
 
 span {
   font-size: 0.9rem;
   letter-spacing: 1px;
-}
-
-:focus {
-  outline-color: var(--clr-accent);
 }
 
 .container {
@@ -73,39 +61,39 @@ button {
   font-size: 0.9rem;
   letter-spacing: 1px;
   margin-top: 1rem;
-  border-radius: var(--border-radius);
+  border-radius: $border-radius;
   transition: all 0.35s ease-in-out;
-}
 
-.btn:focus {
-  outline: none;
+  &.btn:focus {
+    outline: none;
+  }
 }
 
 .btn-primary {
   background-color: transparent;
-  color: var(--clr-accent);
-  border: 1px solid var(--clr-accent);
-  box-shadow: var(--box-shadow);
+  color: $clr-accent;
+  border: 1px solid $clr-accent;
+  box-shadow: $box-shadow;
   text-transform: uppercase;
-}
 
-.btn-primary:hover {
-  background-color: var(--clr-accent);
-  color: var(--clr-black-dark);
+  &:hover {
+    background-color: $clr-accent;
+    color: $clr-black-dark;
+  }
 }
 
 .btn-secondary {
   padding: 0.3rem;
   font-size: 0.75rem;
   background-color: transparent;
-  color: var(--clr-white);
-  border-bottom: 1px solid var(--clr-white);
+  color: $clr-white;
+  border-bottom: 1px solid $clr-white;
   margin-left: auto;
-}
 
-.btn-secondary:hover {
-  color: var(--clr-gray);
-  border-bottom-color: currentColor;
+  &:hover {
+    color: $clr-gray;
+    border-bottom-color: currentColor;
+  }
 }
 
 @keyframes fade {

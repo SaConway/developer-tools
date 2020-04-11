@@ -67,16 +67,23 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .form {
-  --gap: 3rem;
+  $gap: 3rem;
   margin-top: 5rem;
   display: grid;
   grid-template-columns: max-content auto max-content;
   grid-template-rows: repeat(2, auto);
-  grid-column-gap: var(--gap);
-  grid-row-gap: calc(var(--gap) * 2);
+  grid-column-gap: $gap;
+  grid-row-gap: calc(#{$gap} * 2);
   place-items: center;
+
+  label {
+    text-align: center;
+    grid-row: 1 / 2;
+    letter-spacing: 1px;
+    transition: order 0.15s;
+  }
 }
 
 .form.px-to-rem .px-label,
@@ -89,29 +96,22 @@ export default {
   order: 3;
 }
 
-label {
-  text-align: center;
-  grid-row: 1 / 2;
-  letter-spacing: 1px;
-  transition: order 0.15s;
-}
-
 .input {
   display: block;
   margin-top: 0.5rem;
   padding: 1rem;
-  border-radius: var(--border-radius);
+  border-radius: $border-radius;
   border: none;
   text-align: center;
   font-size: 1.25rem;
-}
 
-.input:disabled {
-  background-color: var(--clr-gray);
-}
+  &:disabled {
+    background-color: $clr-gray;
+  }
 
-.input:not(:disabled) {
-  border-left: 5px solid var(--clr-accent);
+  &:not(:disabled) {
+    border-left: 5px solid $clr-accent;
+  }
 }
 
 .swap-btn {
@@ -119,7 +119,7 @@ label {
   order: 2;
   align-self: flex-end;
   background-color: transparent;
-  color: var(--clr-white);
+  color: $clr-white;
   font-size: 1.5rem;
   grid-row: 1 / 2;
   transition: transform 0.5s ease-in-out;
@@ -137,13 +137,13 @@ label {
 .font-size-input {
   text-align: center;
   background: transparent;
-  color: var(--clr-white);
+  color: $clr-white;
   border: none;
   width: 1rem;
   text-decoration: underline;
-}
 
-.font-size-input:focus {
-  outline: none;
+  &:focus {
+    outline: none;
+  }
 }
 </style>
