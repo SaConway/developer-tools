@@ -27,7 +27,16 @@
         />
       </label>
 
-      <p>Relative to root font size of {{ fontSize }}px</p>
+      <p>
+        Relative to root font-size of
+        <input
+          type="text"
+          class="font-size-input"
+          v-model="fontSize"
+          @keyup="convert"
+        />
+        pixel
+      </p>
     </form>
   </div>
 </template>
@@ -126,5 +135,18 @@ label {
 p {
   font-size: 0.9rem;
   grid-column: 1 / -1;
+}
+
+.font-size-input {
+  text-align: center;
+  background: transparent;
+  color: var(--clr-white);
+  border: none;
+  width: 1rem;
+  text-decoration: underline;
+}
+
+.font-size-input:focus {
+  outline: none;
 }
 </style>
