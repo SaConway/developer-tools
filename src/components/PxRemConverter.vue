@@ -27,7 +27,7 @@
         />
       </label>
 
-      <p>
+      <p class="fineprint">
         Relative to root font-size of
         <input
           type="text"
@@ -79,25 +79,21 @@ export default {
   place-items: center;
 }
 
-.form.px-to-rem .px-label {
-  grid-column: 1 / 2;
-}
-
-.form.px-to-rem .rem-label {
-  grid-column: 3 / 4;
-}
-
-.form.rem-to-px .px-label {
-  grid-column: 3 / 4;
-}
-
+.form.px-to-rem .px-label,
 .form.rem-to-px .rem-label {
-  grid-column: 1 / 2;
+  order: 1;
+}
+
+.form.px-to-rem .rem-label,
+.form.rem-to-px .px-label {
+  order: 3;
 }
 
 label {
   text-align: center;
   grid-row: 1 / 2;
+  letter-spacing: 1px;
+  transition: order 0.15s;
 }
 
 .input {
@@ -114,25 +110,26 @@ label {
   background-color: var(--clr-gray);
 }
 
+.input:not(:disabled) {
+  border-left: 5px solid var(--clr-accent);
+}
+
 .swap-btn {
   padding: 1rem;
+  order: 2;
   align-self: flex-end;
   background-color: transparent;
   color: var(--clr-white);
   font-size: 1.5rem;
   grid-row: 1 / 2;
-  transition: transform 0.4s ease-in-out;
+  transition: transform 0.5s ease-in-out;
 }
 
 .form.rem-to-px .swap-btn {
   transform: rotate(180deg);
 }
 
-.form.px-to-rem .swap-btn {
-  transform: rotate(180deg);
-}
-
-p {
+.fineprint {
   font-size: 0.9rem;
   grid-column: 1 / -1;
 }
