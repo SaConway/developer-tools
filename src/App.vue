@@ -23,7 +23,7 @@ export default {
   --clr-black-dark: #1d1d1d;
   --clr-accent: #00bcd4;
   --clr-accent-light: #0096a9;
-  --clr-red: #dd2c00;
+  --clr-red: #dc3545;
   --clr-gray: #ccc;
   --border-radius: 0.1rem;
   --box-shadow: 0 0 2.5px rgba(0, 0, 0, 0.25);
@@ -67,7 +67,6 @@ button {
 }
 
 .btn {
-  display: block;
   cursor: pointer;
   padding: 0.5rem 1.5rem;
   border: none;

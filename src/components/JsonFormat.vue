@@ -1,9 +1,17 @@
 <template>
   <div class="container">
     <form class="json-form">
-      <textarea v-model="jsonInput" class="json-input" placeholder="JSON input here.."></textarea>
+      <textarea
+        v-model="jsonInput"
+        :class="{ err: jsonInvalid }"
+        class="json-input"
+        placeholder="JSON input here.."
+        ref="jsonInputEle"
+      ></textarea>
 
       <button @click.prevent="formatJson" class="btn btn-primary">Format</button>
+
+      <span class="json-invalid-text" v-if="jsonInvalid">Invalid JSON!</span>
     </form>
 
     <div v-if="jsonOutput" class="json-output">
@@ -11,8 +19,6 @@
       <button @click="copyJson" class="btn btn-secondary btn-copy-json">Copy</button>
       <pre class="json-output-text" id="json-output">{{ jsonOutput }}</pre>
     </div>
-
-    <span class="json-invalid-text" v-if="jsonInvalid">Invalid JSON!</span>
   </div>
 </template>
 
@@ -25,6 +31,9 @@ export default {
       jsonCopied: false,
       jsonInvalid: false
     };
+  },
+  mounted() {
+    this.$refs.jsonInputEle.focus();
   },
   methods: {
     formatJson() {
@@ -69,6 +78,10 @@ export default {
   color: var(--clr-black);
 }
 
+.json-input.err {
+  border: 1px solid var(--clr-red);
+}
+
 .json-input:focus {
   outline: 0.1rem solid var(--clr-accent);
 }
@@ -85,6 +98,10 @@ export default {
   animation: fade 0.5s ease;
 }
 
+.btn-copy-json {
+  display: block;
+}
+
 .json-copy-text {
   color: var(--clr-white);
   position: absolute;
@@ -94,18 +111,35 @@ export default {
 }
 
 .json-invalid-text {
-  color: var(--clr-red);
-  background-color: var(--clr-white);
-  border: 2px solid var(--clr-red);
-  box-shadow: var(--box-shadow);
-  font-weight: bold;
-  padding: 1rem;
-  display: block;
-  text-align: center;
-  animation: shake 0.62s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-  transform: translate3d(0, 0, 0);
+  background: var(--clr-red);
+  color: #fff;
+  padding: 0.4rem 1rem;
+  margin-left: 5rem;
+  border-radius: var(--border-radius);
+  display: inline-block;
+  animation: fade 0.5s ease-in-out;
   backface-visibility: hidden;
-  perspective: 1000px;
+  position: relative;
+}
+
+.json-invalid-text::before {
+  content: "";
+  position: absolute;
+  left: 0.75rem;
+  bottom: 100%;
+  width: 1px;
+  height: 1.15rem;
+  background-color: currentColor;
+}
+
+.json-invalid-text::after {
+  content: "";
+  position: absolute;
+  right: 0.75rem;
+  bottom: 100%;
+  width: 1px;
+  height: 1.15rem;
+  background-color: currentColor;
 }
 
 @keyframes fade-slide {
