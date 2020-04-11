@@ -1,17 +1,11 @@
 <template>
   <div id="app">
-    <JsonFormat />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import JsonFormat from "./components/JsonFormat";
-
-export default {
-  components: {
-    JsonFormat
-  }
-};
+export default {};
 </script>
 
 <style>
@@ -53,10 +47,16 @@ span {
   letter-spacing: 1px;
 }
 
+:focus {
+  outline-color: var(--clr-accent);
+}
+
 .container {
   width: 80%;
   max-width: 1000px;
   margin: 3rem auto;
+  display: grid;
+  place-items: center;
   animation: fade 1s ease;
 }
 
