@@ -65,6 +65,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.container {
+  align-items: flex-start;
+}
+
 .json-form {
   margin-bottom: 3rem;
   width: 100%;

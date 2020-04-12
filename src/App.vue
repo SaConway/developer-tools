@@ -56,7 +56,6 @@ button {
 .main {
   display: grid;
   grid-template-columns: auto 1fr;
-  column-gap: 1rem;
   min-height: 100vh;
 }
 
