@@ -39,7 +39,6 @@ export default {};
     &.router-link-active::before {
       content: "";
       position: absolute;
-      left: 0;
       top: 50%;
       transform: translateY(-50%);
       $size: 0.5rem;
@@ -47,6 +46,16 @@ export default {};
       height: $size;
       background-color: $clr-accent;
       border-radius: $border-radius;
+      animation: slide-in 0.35s ease-in-out forwards;
+
+      @keyframes slide-in {
+        from {
+          left: -3rem;
+        }
+        to {
+          left: 0;
+        }
+      }
     }
 
     &:hover {

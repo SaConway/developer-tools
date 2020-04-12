@@ -10,6 +10,7 @@
           ref="pxInputEle"
           id="px"
           @keyup="convert"
+          autocomplete="off"
           :disabled="!pxToRem"
         />
       </label>
@@ -24,6 +25,7 @@
           type="text"
           id="rem"
           @keyup="convert"
+          autocomplete="off"
           :disabled="pxToRem"
         />
       </label>
