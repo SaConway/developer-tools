@@ -7,6 +7,7 @@
           v-model="pxValue"
           class="input"
           type="text"
+          ref="pxInputEle"
           id="px"
           @keyup="convert"
           :disabled="!pxToRem"
@@ -51,6 +52,9 @@ export default {
       pxToRem: true
     };
   },
+  mounted() {
+    this.$refs.pxInputEle.focus();
+  },
   methods: {
     convert() {
       if (this.pxToRem) {
@@ -73,27 +77,35 @@ export default {
   margin-top: 5rem;
   display: grid;
   grid-template-columns: max-content auto max-content;
-  grid-template-rows: repeat(2, auto);
   grid-column-gap: $gap;
   grid-row-gap: calc(#{$gap} * 2);
   place-items: center;
 
   label {
     text-align: center;
-    grid-row: 1 / 2;
     letter-spacing: 1px;
     transition: order 0.15s;
   }
 }
 
-.form.px-to-rem .px-label,
-.form.rem-to-px .rem-label {
-  order: 1;
+.form.form.rem-to-px {
+  grid-template-areas:
+    "rem-label swap-btn px-label"
+    "fineprint fineprint fineprint";
 }
 
-.form.px-to-rem .rem-label,
-.form.rem-to-px .px-label {
-  order: 3;
+.form.form.px-to-rem {
+  grid-template-areas:
+    "px-label swap-btn rem-label"
+    "fineprint fineprint fineprint";
+}
+
+.rem-label {
+  grid-area: rem-label;
+}
+
+.px-label {
+  grid-area: px-label;
 }
 
 .input {
@@ -116,13 +128,12 @@ export default {
 
 .swap-btn {
   padding: 1rem;
-  order: 2;
   align-self: flex-end;
   background-color: transparent;
   color: $clr-white;
   font-size: 1.5rem;
-  grid-row: 1 / 2;
-  transition: transform 0.5s ease-in-out;
+  grid-area: swap-btn;
+  transition: transform 0.25s ease-in-out;
 }
 
 .form.rem-to-px .swap-btn {
@@ -131,7 +142,7 @@ export default {
 
 .fineprint {
   font-size: 0.9rem;
-  grid-column: 1 / -1;
+  grid-area: fineprint;
 }
 
 .font-size-input {
@@ -144,6 +155,35 @@ export default {
 
   &:focus {
     outline: none;
+  }
+}
+
+@media (max-width: 1200px) {
+  .form {
+    grid-template-columns: 1fr;
+    grid-row-gap: 1.5rem;
+  }
+
+  .form.form.rem-to-px {
+    grid-template-areas:
+      "rem-label"
+      "swap-btn"
+      "px-label"
+      "."
+      "."
+      "."
+      "fineprint";
+  }
+
+  .form.form.px-to-rem {
+    grid-template-areas:
+      "px-label"
+      "swap-btn"
+      "rem-label"
+      "."
+      "."
+      "."
+      "fineprint";
   }
 }
 </style>

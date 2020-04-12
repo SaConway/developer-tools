@@ -32,17 +32,25 @@ export default {};
     color: $clr-white;
     text-decoration: none;
     padding: 0 1rem;
+    letter-spacing: 1px;
     position: relative;
+    white-space: nowrap;
 
     &.router-link-active::before {
       content: "";
-      display: inline-block;
       position: absolute;
       left: 0;
-      top: 0;
-      width: 3px;
-      height: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      $size: 0.5rem;
+      width: $size;
+      height: $size;
       background-color: $clr-accent;
+      border-radius: $border-radius;
+    }
+
+    &:hover {
+      color: $clr-gray;
     }
   }
 }

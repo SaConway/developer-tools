@@ -39,6 +39,7 @@ body {
   background-color: $clr-black;
   color: $clr-white;
   font-family: "Open Sans", sans-serif;
+  overflow-x: hidden;
 }
 
 span {
