@@ -41,18 +41,21 @@ export default {};
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      $size: 0.5rem;
-      width: $size;
-      height: $size;
       background-color: $clr-accent;
       border-radius: $border-radius;
       animation: slide-in 0.35s ease-in-out forwards;
 
       @keyframes slide-in {
         from {
+          $size: 1rem;
+          width: $size;
+          height: $size;
           left: -3rem;
         }
         to {
+          $size: 0.5rem;
+          width: $size;
+          height: $size;
           left: 0;
         }
       }
