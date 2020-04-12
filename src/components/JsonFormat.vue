@@ -96,6 +96,7 @@ export default {
 }
 
 .json-output {
+  width: 100%;
   position: relative;
   animation: fade 0.5s ease;
 }

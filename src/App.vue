@@ -86,13 +86,30 @@ button {
 .btn-primary {
   background-color: transparent;
   color: $clr-accent;
-  border: 1px solid $clr-accent;
   box-shadow: $box-shadow;
   text-transform: uppercase;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background-color: $clr-accent;
+    border-radius: $border-radius;
+    transition: width 0.34s ease-in;
+    z-index: -1;
+  }
 
   &:hover {
-    background-color: $clr-accent;
+    // background-color: $clr-accent;
     color: $clr-black-dark;
+  }
+
+  &:hover::before {
+    width: 100%;
   }
 }
 
