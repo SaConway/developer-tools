@@ -76,7 +76,6 @@ export default {
 <style lang="scss" scoped>
 .form {
   $gap: 3rem;
-  margin-top: 5rem;
   display: grid;
   grid-template-columns: max-content auto max-content;
   grid-column-gap: $gap;
@@ -86,17 +85,16 @@ export default {
   label {
     text-align: center;
     letter-spacing: 1px;
-    transition: order 0.15s;
   }
 }
 
-.form.form.rem-to-px {
+.form.rem-to-px {
   grid-template-areas:
     "rem-label swap-btn px-label"
     "fineprint fineprint fineprint";
 }
 
-.form.form.px-to-rem {
+.form.px-to-rem {
   grid-template-areas:
     "px-label swap-btn rem-label"
     "fineprint fineprint fineprint";
@@ -166,7 +164,7 @@ export default {
     grid-row-gap: 1.5rem;
   }
 
-  .form.form.rem-to-px {
+  .form.rem-to-px {
     grid-template-areas:
       "rem-label"
       "swap-btn"
@@ -177,7 +175,7 @@ export default {
       "fineprint";
   }
 
-  .form.form.px-to-rem {
+  .form.px-to-rem {
     grid-template-areas:
       "px-label"
       "swap-btn"

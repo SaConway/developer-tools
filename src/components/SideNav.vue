@@ -2,10 +2,13 @@
   <nav class="side-nav">
     <ul>
       <li>
-        <router-link to="/json-format" class="link">Json Format</router-link>
+        <router-link to="/json-format" class="link">JSON Format</router-link>
       </li>
       <li>
-        <router-link to="/px-rem-converter" class="link">Px-Rem Converter</router-link>
+        <router-link to="/px-rem-converter" class="link">PX-REM Converter</router-link>
+      </li>
+      <li>
+        <router-link to="/hex-rgb-converter" class="link">HEX-RGB Converter</router-link>
       </li>
     </ul>
   </nav>
