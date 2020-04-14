@@ -5,10 +5,7 @@
         <span>HEX</span>
 
         <div>
-          <span
-            class="hash"
-            :style="{ 'background-color': `#${hexValue}`, 'color': `${invertColor(hexValue)}` }"
-          >#</span>
+          <span class="hash" :style="{ 'background-color': `#${hexValue}`, 'color': invertClr }">#</span>
           <input
             v-model="hexValue"
             class="input"
@@ -46,7 +43,8 @@ export default {
     return {
       hexValue: "0096a9",
       rgbValue: "0, 150, 169",
-      hexToRgb: true
+      hexToRgb: true,
+      invertClr: "#fff"
     };
   },
   mounted() {
@@ -54,54 +52,62 @@ export default {
   },
   methods: {
     convert() {
-      // turn 3-HEX to 6-HEX
-      if (this.hexValue.length === 3) {
-        this.hexValue =
-          this.hexValue[0] +
-          this.hexValue[0] +
-          this.hexValue[1] +
-          this.hexValue[1] +
-          this.hexValue[2] +
-          this.hexValue[2];
-      }
+      const hex = this.prettyHex();
 
-      const red = this.hexValue.substr(0, 2),
-        green = this.hexValue.substr(2, 2),
-        blue = this.hexValue.substr(4, 2);
+      if (!hex) return;
+
+      const red = hex.substr(0, 2),
+        green = hex.substr(2, 2),
+        blue = hex.substr(4, 2);
 
       const red10 = parseInt(red, 16),
         green10 = parseInt(green, 16),
         blue10 = parseInt(blue, 16);
 
+      if (
+        !Number.isInteger(red10) ||
+        !Number.isInteger(green10) ||
+        !Number.isInteger(blue10)
+      ) {
+        return;
+      }
+
       this.rgbValue = red10 + ", " + green10 + ", " + blue10;
 
-      //   if (this.hexToRgb) {
-      //   } else {
-      //   }
+      if (red10 * 0.299 + green10 * 0.587 + blue10 * 0.114 > 186) {
+        this.invertClr = "#000000";
+      } else {
+        this.invertClr = "#ffffff";
+      }
+    },
+    prettyHex() {
+      this.hexValue = this.hexValue.replace("#", "");
+      let hex = this.hexValue;
+
+      if (
+        hex.length === 0 ||
+        hex.length === 1 ||
+        hex.length === 2 ||
+        hex.length === 4 ||
+        hex.length === 5
+      ) {
+        return false;
+      }
+
+      // turn 3-HEX to 6-HEX
+      if (hex.length === 3) {
+        hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+      }
+
+      if (hex.length > 6) {
+        hex = hex.substring(0, 6);
+      }
+
+      return hex;
     },
     swap() {
       this.hexToRgb = !this.hexToRgb;
       this.convert();
-    },
-    invertColor(hex) {
-      // convert 3-digit hex to 6-digits.
-      if (hex.length === 3) {
-        hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
-      }
-      if (hex.length !== 6) {
-        throw new Error("Invalid HEX color.");
-      }
-      // invert color components
-      var r = (255 - parseInt(hex.slice(0, 2), 16)).toString(16),
-        g = (255 - parseInt(hex.slice(2, 4), 16)).toString(16),
-        b = (255 - parseInt(hex.slice(4, 6), 16)).toString(16);
-      // pad each with zeros and return
-      return "#" + this.padZero(r) + this.padZero(g) + this.padZero(b);
-    },
-    padZero(str, len) {
-      len = len || 2;
-      var zeros = new Array(len).join("0");
-      return (zeros + str).slice(-len);
     }
   }
 };
