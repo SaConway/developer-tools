@@ -79,7 +79,7 @@ button {
   border-radius: $border-radius;
   transition: all 0.35s ease-in-out;
 
-  &.btn:focus {
+  &:focus {
     outline: none;
   }
 }
@@ -87,7 +87,7 @@ button {
 .btn-primary {
   background-color: transparent;
   color: $clr-accent;
-  box-shadow: $box-shadow;
+  box-shadow: 0 0 0.5rem rgba(black, 0.65);
   text-transform: uppercase;
   position: relative;
 
@@ -105,7 +105,6 @@ button {
   }
 
   &:hover {
-    // background-color: $clr-accent;
     color: $clr-black-dark;
   }
 
