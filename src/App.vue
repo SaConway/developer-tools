@@ -40,6 +40,7 @@ body {
   color: $clr-white;
   font-family: "Open Sans", sans-serif;
   overflow-x: hidden;
+  letter-spacing: 1px;
 }
 
 span {

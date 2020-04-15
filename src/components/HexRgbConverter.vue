@@ -5,14 +5,14 @@
         <span>HEX</span>
 
         <div>
-          <span class="hash" :style="{ 'background-color': `#${hexValue}`, 'color': invertClr }">#</span>
+          <span class="hash" :style="hashStyle">#</span>
           <input
             v-model="hexValue"
             class="input"
             type="text"
             ref="hexInputEle"
             id="hex"
-            @keyup="convert"
+            @keyup="convertToRgb"
             autocomplete="off"
             :disabled="!hexToRgb"
           />
@@ -28,7 +28,7 @@
           class="input input-rgb"
           type="text"
           id="rgb"
-          @keyup="convert"
+          @keyup="convertToHex"
           autocomplete="off"
           :disabled="hexToRgb"
         />
@@ -43,18 +43,29 @@ export default {
     return {
       hexValue: "0096a9",
       rgbValue: "0, 150, 169",
-      hexToRgb: true,
-      invertClr: "#fff"
+      invertClr: "#fff",
+      hexToRgb: true
     };
+  },
+  computed: {
+    hashStyle: function() {
+      return {
+        backgroundColor: this.hexToRgb
+          ? `rgb(${this.rgbValue})`
+          : `#${this.hexValue}`,
+        color: this.invertClr
+      };
+    }
   },
   mounted() {
     this.$refs.hexInputEle.focus();
   },
   methods: {
-    convert() {
+    convertToRgb() {
       const hex = this.prettyHex();
+      console.log("Log: convertToRgb -> hex", hex);
 
-      if (!hex) return;
+      if (hex === null) return;
 
       const red = hex.substr(0, 2),
         green = hex.substr(2, 2),
@@ -74,14 +85,10 @@ export default {
 
       this.rgbValue = red10 + ", " + green10 + ", " + blue10;
 
-      if (red10 * 0.299 + green10 * 0.587 + blue10 * 0.114 > 186) {
-        this.invertClr = "#000000";
-      } else {
-        this.invertClr = "#ffffff";
-      }
+      this.setInvertClr(red10, green10, blue10);
     },
     prettyHex() {
-      this.hexValue = this.hexValue.replace("#", "");
+      this.hexValue = this.hexValue.replace("#", "").replace(/ /g, "");
       let hex = this.hexValue;
 
       if (
@@ -91,7 +98,7 @@ export default {
         hex.length === 4 ||
         hex.length === 5
       ) {
-        return false;
+        return null;
       }
 
       // turn 3-HEX to 6-HEX
@@ -105,9 +112,50 @@ export default {
 
       return hex;
     },
+    convertToHex() {
+      const rgb = this.rgbValue.replace(/ /g, "").split(",");
+
+      const red = +rgb[0],
+        green = +rgb[1],
+        blue = +rgb[2];
+
+      console.log(red, green, blue);
+
+      if (
+        !Number.isInteger(red) ||
+        !Number.isInteger(green) ||
+        !Number.isInteger(blue)
+      ) {
+        return;
+      }
+      this.hexValue =
+        this.componentToHex(red) +
+        this.componentToHex(green) +
+        this.componentToHex(blue);
+
+      this.setInvertClr(red, green, blue);
+    },
+    componentToHex(c) {
+      const hex = c.toString(16);
+      return hex.length === 1 ? "0" + hex : hex;
+    },
+    setInvertClr(r, g, b) {
+      console.log("setInvertClr");
+
+      if (r * 0.299 + g * 0.587 + b * 0.114 > 186) {
+        this.invertClr = "#000";
+      } else {
+        this.invertClr = "#fff";
+      }
+    },
     swap() {
       this.hexToRgb = !this.hexToRgb;
-      this.convert();
+
+      if (this.hexToRgb) {
+        this.convertToRgb();
+      } else {
+        this.convertToHex();
+      }
     }
   }
 };
@@ -120,18 +168,18 @@ export default {
   grid-column-gap: 3rem;
   place-items: center;
 
+  &.rgb-to-hex {
+    grid-template-areas: "rgb-label swap-btn hex-label";
+  }
+
+  &.hex-to-rgb {
+    grid-template-areas: "hex-label swap-btn rgb-label";
+  }
+
   label {
     text-align: center;
     letter-spacing: 1px;
   }
-}
-
-.form.rgb-to-hex {
-  grid-template-areas: "rgb-label swap-btn hex-label";
-}
-
-.form.hex-to-rgb {
-  grid-template-areas: "hex-label swap-btn rgb-label";
 }
 
 .hex-label {
@@ -139,6 +187,7 @@ export default {
 
   & > span:first-of-type {
     display: block;
+    font-size: inherit;
   }
 
   & > div {
@@ -201,20 +250,20 @@ export default {
   .form {
     grid-template-columns: 1fr;
     grid-row-gap: 1.5rem;
-  }
 
-  .form.rgb-to-hex {
-    grid-template-areas:
-      "rgb-label"
-      "swap-btn"
-      "hex-label";
-  }
+    &.rgb-to-hex {
+      grid-template-areas:
+        "rgb-label"
+        "swap-btn"
+        "hex-label";
+    }
 
-  .form.hex-to-rgb {
-    grid-template-areas:
-      "hex-label"
-      "swap-btn"
-      "rgb-label";
+    &.hex-to-rgb {
+      grid-template-areas:
+        "hex-label"
+        "swap-btn"
+        "rgb-label";
+    }
   }
 }
 </style>

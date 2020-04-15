@@ -2,13 +2,13 @@
   <nav class="side-nav">
     <ul>
       <li>
-        <router-link to="/json-format" class="link">JSON Format</router-link>
+        <router-link to="/json-format" class="link">json format</router-link>
       </li>
       <li>
-        <router-link to="/px-rem-converter" class="link">PX-REM Converter</router-link>
+        <router-link to="/px-rem-converter" class="link">px-rem Converter</router-link>
       </li>
       <li>
-        <router-link to="/hex-rgb-converter" class="link">HEX-RGB Converter</router-link>
+        <router-link to="/hex-rgb-converter" class="link">hex-rgb Converter</router-link>
       </li>
     </ul>
   </nav>
@@ -30,43 +30,43 @@ export default {};
   li + li {
     margin-top: 1.25rem;
   }
+}
 
-  .link {
-    color: $clr-white;
-    text-decoration: none;
-    padding: 0 1rem;
-    letter-spacing: 1px;
-    position: relative;
-    white-space: nowrap;
+.link {
+  color: $clr-white;
+  text-decoration: none;
+  padding: 0 1rem;
+  position: relative;
+  white-space: nowrap;
+  text-transform: capitalize;
 
-    &.router-link-active::before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: $clr-accent;
-      border-radius: $border-radius;
-      animation: slide-in 0.35s ease-in-out forwards;
+  &.router-link-active::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: $clr-accent;
+    border-radius: $border-radius;
+    animation: slide-in 0.35s ease-in-out forwards;
+  }
 
-      @keyframes slide-in {
-        from {
-          $size: 1rem;
-          width: $size;
-          height: $size;
-          left: -3rem;
-        }
-        to {
-          $size: 0.5rem;
-          width: $size;
-          height: $size;
-          left: 0;
-        }
-      }
-    }
+  &:hover {
+    color: $clr-gray;
+  }
+}
 
-    &:hover {
-      color: $clr-gray;
-    }
+@keyframes slide-in {
+  from {
+    $size: 1rem;
+    width: $size;
+    height: $size;
+    left: -3rem;
+  }
+  to {
+    $size: 0.5rem;
+    width: $size;
+    height: $size;
+    left: 0;
   }
 }
 </style>
