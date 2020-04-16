@@ -93,6 +93,7 @@ export default {
   padding: 1rem;
   box-shadow: $box-shadow;
   overflow-y: auto;
+  white-space: pre-wrap;
 }
 
 .json-output {
