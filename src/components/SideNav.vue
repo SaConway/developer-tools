@@ -2,13 +2,16 @@
   <nav class="side-nav">
     <ul>
       <li>
-        <router-link to="/json-format" class="link">json format</router-link>
+        <router-link to="/json-format" class="link">Json Format</router-link>
       </li>
       <li>
-        <router-link to="/px-rem-converter" class="link">px-rem Converter</router-link>
+        <router-link to="/px-rem-converter" class="link">Px-rem Converter</router-link>
       </li>
       <li>
-        <router-link to="/hex-rgb-converter" class="link">hex-rgb Converter</router-link>
+        <router-link to="/hex-rgb-converter" class="link">Hex-rgb Converter</router-link>
+      </li>
+      <li>
+        <router-link to="/svg-path-length" class="link">Svg Path Length</router-link>
       </li>
     </ul>
   </nav>
