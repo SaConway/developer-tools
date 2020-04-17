@@ -77,7 +77,7 @@ button {
   letter-spacing: 1px;
   margin-top: 1rem;
   border-radius: $border-radius;
-  transition: all 0.35s ease-in-out;
+  transition: all 0.2s ease-in-out;
 
   &:focus {
     outline: none;
@@ -91,25 +91,8 @@ button {
   text-transform: uppercase;
   position: relative;
 
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 0;
-    background-color: $clr-accent;
-    border-radius: $border-radius;
-    transition: width 0.34s ease-in;
-    z-index: -1;
-  }
-
   &:hover {
-    color: $clr-black-dark;
-  }
-
-  &:hover::before {
-    width: 100%;
+    color: $clr-accent-light;
   }
 }
 
