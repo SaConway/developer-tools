@@ -42,8 +42,8 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  grid-template-rows: repeat(3, min-content);
-  align-items: flex-start;
+  display: block;
+  width: 50%;
 }
 
 .input {
@@ -62,7 +62,8 @@ export default {
 }
 
 .length-txt {
-  margin-top: 5rem;
+  width: fit-content;
+  margin: 5rem auto 0;
   letter-spacing: 2px;
   animation: fade 0.3s;
 
