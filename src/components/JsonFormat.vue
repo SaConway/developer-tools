@@ -3,7 +3,7 @@
     <form class="json-form">
       <textarea
         v-model="jsonInput"
-        :class="{ err: jsonInvalid }"
+        :class="{ err: err }"
         class="json-input"
         placeholder="JSON input here.."
         ref="jsonInputEle"
@@ -11,8 +11,6 @@
       ></textarea>
 
       <button @click.prevent="formatJson" class="btn btn-primary">Format</button>
-
-      <span class="json-invalid-text" v-if="jsonInvalid">Invalid JSON!</span>
     </form>
 
     <div v-if="jsonOutput" class="json-output">
@@ -30,7 +28,7 @@ export default {
       jsonInput: null,
       jsonOutput: null,
       jsonCopied: false,
-      jsonInvalid: false
+      err: false
     };
   },
   mounted() {
@@ -38,7 +36,7 @@ export default {
   },
   methods: {
     formatJson() {
-      this.jsonInvalid = false;
+      this.err = false;
       this.jsonOutput = null;
 
       this.$nextTick().then(() => {
@@ -48,7 +46,7 @@ export default {
             const jsonStr = JSON.stringify(jsonObj, null, 4);
             this.jsonOutput = jsonStr;
           } catch (error) {
-            this.jsonInvalid = true;
+            this.err = true;
           }
         }
       });
@@ -66,7 +64,7 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  align-items: flex-start;
+  display: block;
 }
 
 .json-form {
@@ -112,38 +110,6 @@ export default {
   right: 0;
   opacity: 0;
   animation: fade-slide 3s ease;
-}
-
-.json-invalid-text {
-  background: $clr-red;
-  color: #fff;
-  padding: 0.4rem 1rem;
-  margin-left: 5rem;
-  border-radius: $border-radius;
-  display: inline-block;
-  animation: fade 0.5s ease-in-out;
-  backface-visibility: hidden;
-  position: relative;
-
-  &::before {
-    content: "";
-    position: absolute;
-    left: 0.75rem;
-    bottom: 100%;
-    width: 1px;
-    height: 1.15rem;
-    background-color: currentColor;
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    right: 0.75rem;
-    bottom: 100%;
-    width: 1px;
-    height: 1.15rem;
-    background-color: currentColor;
-  }
 }
 
 @keyframes fade-slide {
