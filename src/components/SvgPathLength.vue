@@ -7,8 +7,9 @@
       placeholder="Copy svg path here.."
       autocomplete="off"
       v-model="pathValue"
+      @keyup.ctrl.enter="calculate"
     />
-    <button class="btn btn-primary" @click="calculate()">Calculate Length</button>
+    <button class="btn btn-primary" @click="calculate">Calculate Length</button>
 
     <p class="length-txt" v-if="length && !err">
       Path Length:
@@ -32,7 +33,8 @@ export default {
   },
   methods: {
     calculate() {
-      this.length = this.$refs.path.getTotalLength().toFixed(3);
+      const length = this.$refs.path.getTotalLength().toFixed(3);
+      this.length = Number(Math.round(length + "e" + 3) + "e-" + 3);
 
       this.err = this.length <= 0;
     }
