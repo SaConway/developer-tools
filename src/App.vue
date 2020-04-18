@@ -75,7 +75,7 @@ button {
   letter-spacing: 1px;
   margin-top: 1rem;
   border-radius: $border-radius;
-  transition: all 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
 
   &:focus {
     outline: none;

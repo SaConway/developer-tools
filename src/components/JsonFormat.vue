@@ -108,6 +108,7 @@ export default {
   color: $clr-white;
   position: absolute;
   right: 0;
+  bottom: calc(100% + 1rem);
   opacity: 0;
   animation: fade-slide 3s ease;
 }
@@ -116,13 +117,13 @@ export default {
   0%,
   100% {
     opacity: 0;
-    bottom: calc(100% + 0.5rem);
+    transform: translateY(100%);
   }
 
   10%,
   90% {
     opacity: 1;
-    bottom: calc(100% + 1rem);
+    transform: translateY(0);
   }
 }
 </style>

@@ -51,10 +51,14 @@ export default {};
     content: "";
     position: absolute;
     top: 50%;
+    left: 0;
+    $size: 0.5rem;
+    width: $size;
+    height: $size;
     transform: translateY(-50%);
     background-color: $clr-accent;
     border-radius: $border-radius;
-    animation: slide-in 0.35s ease-in-out forwards;
+    animation: slide-in 0.25s ease-in-out forwards;
   }
 
   &:hover {
@@ -64,16 +68,10 @@ export default {};
 
 @keyframes slide-in {
   from {
-    $size: 1rem;
-    width: $size;
-    height: $size;
-    left: -3rem;
+    transform: translate(-150%, -50%);
   }
   to {
-    $size: 0.5rem;
-    width: $size;
-    height: $size;
-    left: 0;
+    transform: translate(0, -50%);
   }
 }
 </style>
