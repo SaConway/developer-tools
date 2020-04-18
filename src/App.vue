@@ -63,9 +63,7 @@ button {
 .container {
   width: 80%;
   max-width: 1000px;
-  margin: 3rem auto;
-  display: grid;
-  place-items: center;
+  margin: 5rem auto;
   animation: fade 1s ease;
 }
 

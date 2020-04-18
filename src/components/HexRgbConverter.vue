@@ -163,6 +163,8 @@ export default {
 
 <style lang="scss" scoped>
 .form {
+  width: fit-content;
+  margin: auto;
   display: grid;
   grid-template-columns: max-content auto max-content;
   grid-column-gap: 3rem;

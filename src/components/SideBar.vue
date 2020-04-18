@@ -26,7 +26,7 @@ export default {};
 <style lang="scss" scoped>
 .side-bar {
   box-shadow: $box-shadow;
-  padding: 1.5rem;
+  padding: 5rem 1.5rem;
 }
 
 .side-nav {

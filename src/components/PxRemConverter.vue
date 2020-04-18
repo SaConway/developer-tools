@@ -76,6 +76,8 @@ export default {
 <style lang="scss" scoped>
 .form {
   $gap: 3rem;
+  width: fit-content;
+  margin: auto;
   display: grid;
   grid-template-columns: max-content auto max-content;
   grid-column-gap: $gap;
