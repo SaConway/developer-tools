@@ -1,16 +1,16 @@
 <template>
   <div id="app" class="main">
-    <SideNav />
+    <SideBar />
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-import SideNav from "@/components/SideNav";
+import SideBar from "@/components/SideBar";
 
 export default {
   components: {
-    SideNav
+    SideBar
   }
 };
 </script>

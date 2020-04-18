@@ -1,20 +1,22 @@
 <template>
-  <nav class="side-nav">
-    <ul>
-      <li>
-        <router-link to="/json-format" class="link">Json Format</router-link>
-      </li>
-      <li>
-        <router-link to="/px-rem-converter" class="link">Px-rem Converter</router-link>
-      </li>
-      <li>
-        <router-link to="/hex-rgb-converter" class="link">Hex-rgb Converter</router-link>
-      </li>
-      <li>
-        <router-link to="/svg-path-length" class="link">Svg Path Length</router-link>
-      </li>
-    </ul>
-  </nav>
+  <aside class="side-bar">
+    <nav class="side-nav">
+      <ul>
+        <li>
+          <router-link to="/json-format" class="link">Json Format</router-link>
+        </li>
+        <li>
+          <router-link to="/px-rem-converter" class="link">Px-rem Converter</router-link>
+        </li>
+        <li>
+          <router-link to="/hex-rgb-converter" class="link">Hex-rgb Converter</router-link>
+        </li>
+        <li>
+          <router-link to="/svg-path-length" class="link">Svg Path Length</router-link>
+        </li>
+      </ul>
+    </nav>
+  </aside>
 </template>
 
 <script>
@@ -22,10 +24,12 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-.side-nav {
+.side-bar {
   box-shadow: $box-shadow;
   padding: 1.5rem;
+}
 
+.side-nav {
   li {
     list-style: none;
   }
