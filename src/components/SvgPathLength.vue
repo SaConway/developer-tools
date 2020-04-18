@@ -6,6 +6,7 @@
       type="text"
       placeholder="Copy svg path here.."
       autocomplete="off"
+      ref="pathInputEle"
       v-model="pathValue"
       @keyup.ctrl.enter="calculate"
     />
@@ -30,6 +31,9 @@ export default {
       length: null,
       err: null
     };
+  },
+  mounted() {
+    this.$refs.pathInputEle.focus();
   },
   methods: {
     calculate() {
