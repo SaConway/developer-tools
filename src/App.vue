@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="main">
-    <SideBar />
+    <SideBar v-if="showSideBar" />
     <router-view></router-view>
   </div>
 </template>
@@ -11,6 +11,11 @@ import SideBar from "@/components/SideBar";
 export default {
   components: {
     SideBar
+  },
+  computed: {
+    showSideBar: function() {
+      return this.$route.name !== "homepage";
+    }
   }
 };
 </script>
@@ -54,9 +59,12 @@ button {
   font-family: inherit;
 }
 
+ul {
+  list-style: none;
+}
+
 .main {
-  display: grid;
-  grid-template-columns: auto 1fr;
+  display: flex;
   min-height: 100vh;
 }
 

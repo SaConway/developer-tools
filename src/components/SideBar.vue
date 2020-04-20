@@ -20,7 +20,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: "SideBar"
+};
 </script>
 
 <style lang="scss" scoped>
@@ -30,10 +32,6 @@ export default {};
 }
 
 .side-nav {
-  li {
-    list-style: none;
-  }
-
   li + li {
     margin-top: 1.25rem;
   }

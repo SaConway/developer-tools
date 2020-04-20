@@ -25,6 +25,7 @@
 
 <script>
 export default {
+  name: "SvgPathLength",
   data() {
     return {
       pathValue: null,

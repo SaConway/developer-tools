@@ -46,6 +46,7 @@
 
 <script>
 export default {
+  name: "PxRemConverter",
   data() {
     return {
       pxValue: 16,

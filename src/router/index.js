@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import Intro from "@/components/Intro";
 import JsonFormat from "@/components/JsonFormat";
 import PxRemConverter from "@/components/PxRemConverter";
 import HexRgbConverter from "@/components/HexRgbConverter";
@@ -10,7 +11,8 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    redirect: "/json-format",
+    component: Intro,
+    name: "homepage",
   },
   {
     path: "/json-format",

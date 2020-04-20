@@ -39,6 +39,7 @@
 
 <script>
 export default {
+  name: "HexRgbConverter",
   data() {
     return {
       hexValue: "0096a9",

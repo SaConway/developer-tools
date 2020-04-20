@@ -23,6 +23,7 @@
 
 <script>
 export default {
+  name: "JsonFormat",
   data() {
     return {
       jsonInput: null,
