@@ -63,7 +63,6 @@ export default {
   methods: {
     convertToRgb() {
       const hex = this.prettyHex();
-      console.log("Log: convertToRgb -> hex", hex);
 
       if (hex === null) return;
 
@@ -119,8 +118,6 @@ export default {
         green = +rgb[1],
         blue = +rgb[2];
 
-      console.log(red, green, blue);
-
       if (
         !Number.isInteger(red) ||
         !Number.isInteger(green) ||
@@ -140,8 +137,6 @@ export default {
       return hex.length === 1 ? "0" + hex : hex;
     },
     setInvertClr(r, g, b) {
-      console.log("setInvertClr");
-
       if (r * 0.299 + g * 0.587 + b * 0.114 > 186) {
         this.invertClr = "#000";
       } else {
