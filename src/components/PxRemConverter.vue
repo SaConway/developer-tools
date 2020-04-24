@@ -87,7 +87,6 @@ export default {
 
   label {
     text-align: center;
-    letter-spacing: 1px;
   }
 }
 
@@ -114,9 +113,6 @@ export default {
 .input {
   display: block;
   margin-top: 0.5rem;
-  padding: 1rem;
-  border-radius: $border-radius;
-  border: none;
   text-align: center;
   font-size: 1.25rem;
 
@@ -136,7 +132,7 @@ export default {
   color: $clr-white;
   font-size: 1.5rem;
   grid-area: swap-btn;
-  transition: transform 0.25s ease-in-out;
+  transition: transform 0.25s ease-in;
 }
 
 .form.rem-to-px .swap-btn {
@@ -152,8 +148,9 @@ export default {
   text-align: center;
   background: transparent;
   color: $clr-white;
-  border: none;
   width: 1rem;
+  padding: 0;
+  box-shadow: none;
   text-decoration: underline;
 
   &:focus {

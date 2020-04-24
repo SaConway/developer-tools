@@ -1,5 +1,5 @@
 <template>
-  <div class="container intro">
+  <div class="container">
     <h1 class="title">Tools for Developers</h1>
 
     <nav class="nav">
@@ -77,7 +77,7 @@ li + li {
     transform: translateY(-50%);
     border-radius: $border-radius;
     background-color: $clr-accent;
-    transition: transform 300ms ease-in;
+    transition: transform 200ms ease-in;
   }
 
   &:hover::before {
@@ -88,6 +88,7 @@ li + li {
 .link-title {
   font-size: 1.1rem;
   text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .link-body {

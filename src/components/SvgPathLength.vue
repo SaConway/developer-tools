@@ -48,15 +48,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
-  display: block;
-  width: 50%;
-}
-
 .input {
   width: 100%;
-  padding: 1rem;
-  color: $clr-black;
   margin-bottom: 1rem;
 
   &.err {
@@ -64,15 +57,10 @@ export default {
   }
 }
 
-.btn {
-  justify-self: flex-start;
-}
-
 .length-txt {
-  width: fit-content;
   margin: 5rem auto 0;
   letter-spacing: 2px;
-  animation: fade 0.3s;
+  animation: fade 300ms ease-in;
 
   span {
     font-size: 1.5em;

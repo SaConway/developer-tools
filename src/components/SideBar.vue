@@ -29,9 +29,7 @@ export default {
 .side-bar {
   box-shadow: $box-shadow;
   padding: 5rem 1.5rem;
-}
 
-.side-nav {
   li + li {
     margin-top: 1.25rem;
   }
@@ -56,7 +54,7 @@ export default {
     transform: translateY(-50%);
     background-color: $clr-accent;
     border-radius: $border-radius;
-    animation: slide-in 0.25s ease-in-out forwards;
+    animation: slide-in 200ms ease-in-out forwards;
   }
 
   &:hover {

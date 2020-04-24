@@ -159,8 +159,6 @@ export default {
 
 <style lang="scss" scoped>
 .form {
-  width: fit-content;
-  margin: auto;
   display: grid;
   grid-template-columns: max-content auto max-content;
   grid-column-gap: 3rem;
@@ -176,7 +174,6 @@ export default {
 
   label {
     text-align: center;
-    letter-spacing: 1px;
   }
 }
 
@@ -215,9 +212,6 @@ export default {
 
 .input {
   margin-top: 0.5rem;
-  padding: 1rem;
-  border-radius: $border-radius;
-  border: none;
   text-align: center;
   font-size: 1.25rem;
 
@@ -237,7 +231,7 @@ export default {
   color: $clr-white;
   font-size: 1.5rem;
   grid-area: swap-btn;
-  transition: transform 0.25s ease-in-out;
+  transition: transform 250ms ease-in-out;
 }
 
 .form.rgb-to-hex .swap-btn {

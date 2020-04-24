@@ -59,6 +59,16 @@ button {
   font-family: inherit;
 }
 
+input,
+textarea {
+  font-size: 0.9rem;
+  padding: 1em;
+  color: $clr-black;
+  border: none;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+}
+
 ul {
   list-style: none;
 }
@@ -72,7 +82,8 @@ ul {
   width: 80%;
   max-width: 1000px;
   margin: 5rem auto;
-  animation: fade 1s ease;
+  padding: 0 2.5rem;
+  animation: fade 1s ease-in;
 }
 
 .btn {
@@ -83,7 +94,7 @@ ul {
   letter-spacing: 1px;
   margin-top: 1rem;
   border-radius: $border-radius;
-  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  transition: color 0.2s ease-in, background-color 0.2s ease-in;
 
   &:focus {
     outline: none;
@@ -95,7 +106,6 @@ ul {
   color: $clr-accent;
   box-shadow: 0 0 0.5rem rgba(black, 0.65);
   text-transform: uppercase;
-  position: relative;
 
   &:hover {
     color: $clr-accent-light;

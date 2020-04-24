@@ -64,23 +64,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
-  display: block;
-}
-
 .json-form {
   margin-bottom: 3rem;
-  width: 100%;
 }
 
 .json-input {
-  display: block;
   width: 100%;
   min-height: 10rem;
-  padding: 1rem;
   resize: vertical;
-  border-radius: $border-radius;
-  color: $clr-black;
 
   &.err {
     border: 1px solid $clr-red;
@@ -96,9 +87,7 @@ export default {
 }
 
 .json-output {
-  width: 100%;
-  position: relative;
-  animation: fade 0.5s ease;
+  animation: fade 0.5s ease-in;
 }
 
 .btn-copy-json {
