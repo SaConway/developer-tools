@@ -1,22 +1,20 @@
 <template>
   <div class="container">
-    <form class="json-form">
-      <textarea
-        v-model="jsonInput"
-        :class="{ err: err }"
-        class="json-input"
-        placeholder="JSON input here.."
-        ref="jsonInputEle"
-        @keyup.ctrl.enter="formatJson"
-      ></textarea>
+    <textarea
+      v-model="jsonInput"
+      class="json-input"
+      :class="{ err: err }"
+      placeholder="JSON input here.."
+      ref="jsonInputEle"
+      @keyup.ctrl.enter="formatJson"
+    ></textarea>
 
-      <button @click.prevent="formatJson" class="btn btn-primary">Format</button>
-    </form>
+    <button @click="formatJson" class="btn btn-primary">Format</button>
 
-    <div v-if="jsonOutput" class="json-output">
+    <div v-if="jsonOutput" class="res">
       <span class="json-copy-text" v-if="jsonCopied">JSON Copied!</span>
-      <button @click="copyJson" class="btn btn-secondary btn-copy-json">Copy</button>
-      <pre class="json-output-text" id="json-output">{{ jsonOutput }}</pre>
+      <button @click="copyJson" class="btn btn-secondary">Copy</button>
+      <pre class="json-output">{{ jsonOutput }}</pre>
     </div>
   </div>
 </template>
@@ -44,8 +42,7 @@ export default {
         if (this.jsonInput) {
           try {
             const jsonObj = JSON.parse(this.jsonInput);
-            const jsonStr = JSON.stringify(jsonObj, null, 4);
-            this.jsonOutput = jsonStr;
+            this.jsonOutput = JSON.stringify(jsonObj, null, 4);
           } catch (error) {
             this.err = true;
           }
@@ -64,34 +61,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.json-form {
-  margin-bottom: 3rem;
-}
-
 .json-input {
   width: 100%;
   min-height: 10rem;
   resize: vertical;
 
   &.err {
-    border: 1px solid $clr-red;
+    outline: 1px solid $clr-red;
   }
 }
 
-.json-output-text {
-  margin-top: 1rem;
-  padding: 1rem;
-  box-shadow: $box-shadow;
-  overflow-y: auto;
-  white-space: pre-wrap;
-}
-
-.json-output {
+.res {
+  margin-top: 3rem;
+  position: relative;
   animation: fade 0.5s ease-in;
-}
-
-.btn-copy-json {
-  display: block;
 }
 
 .json-copy-text {
@@ -100,7 +83,19 @@ export default {
   right: 0;
   bottom: calc(100% + 1rem);
   opacity: 0;
-  animation: fade-slide 3s ease;
+  animation: fade-slide 3s ease-in;
+}
+
+.btn {
+  display: block;
+}
+
+.json-output {
+  margin-top: 1rem;
+  padding: 1rem;
+  box-shadow: $box-shadow;
+  overflow-y: auto;
+  white-space: pre-wrap;
 }
 
 @keyframes fade-slide {
